@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="CS4330CheckerBoard.jnlp">
+  <information>
+    <title>CS4330CheckerBoard</title>
+    <vendor>Trevor</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="CS4330CheckerBoard.jar" size="9525" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="CS4330CheckerBoard" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="cs4330checkerboard.CS4330CheckerBoard"  name="CS4330CheckerBoard" />
+  <update check="always"/>
+</jnlp>

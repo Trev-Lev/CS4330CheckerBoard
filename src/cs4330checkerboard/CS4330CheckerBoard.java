@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -22,6 +23,7 @@ public class CS4330CheckerBoard extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CheckerBoardFXML.fxml"));
+        
         Parent root = loader.load();
         Startable controller = loader.getController();
         Scene scene = new Scene(root);
@@ -31,6 +33,14 @@ public class CS4330CheckerBoard extends Application {
         stage.show();
         
         controller.start(stage);
+        
+        /*
+        idea: make the anchorpane the root of the scene
+        IT WILL AUTOMATICALLY RESIZE IF THE ROOT
+        
+        */
+    
+    
     }
 
     /**

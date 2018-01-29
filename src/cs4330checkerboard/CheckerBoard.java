@@ -57,17 +57,11 @@ public class CheckerBoard {
     public AnchorPane build() {
         if (anchorPane == null) {
             anchorPane = new AnchorPane();
-            refresh();
             setResizable();
             vbox.getChildren().add(anchorPane);
-            return anchorPane;
-        } else {
-            vbox.getChildren().remove(anchorPane);
-            anchorPane.getChildren().clear();
-            refresh();
-            vbox.getChildren().add(anchorPane);
-            return anchorPane;
-        }
+        } 
+        refresh();
+        return anchorPane;
     }
     
     public AnchorPane getBoard() {
@@ -75,10 +69,20 @@ public class CheckerBoard {
         else return build();
     }
     
+    // Function for testing purposes
+    public void test() {
+        System.out.println("Anchorpane w/h: " + width + " " + height);
+        System.out.println("Stage w/h: " + stage.getWidth() + " " + stage.getHeight());
+    }
+    
     private void refresh() {
+        clearChildren();
         
-        // Update the width/height based on size of application
-        anchorPane.setPrefSize(width, height);
+        // The offsets for the AnchorPane when the stage (vbox + menu) are taken into account:
+        // width: -15
+        // height: -65
+        width = stage.getWidth() - 15;
+        height = stage.getHeight() - 65;
         
         // Refresh: refresh the state of the board.
         double rectWidth = Math.ceil(width / numCols);
@@ -99,7 +103,7 @@ public class CheckerBoard {
     public void setColors(Color lightColor, Color darkColor) {
         this.lightColor = lightColor;
         this.darkColor = darkColor;
-        build();
+        refresh();
     }
     
     public void setStage(Stage stage) {
@@ -150,26 +154,21 @@ public class CheckerBoard {
         return rectangleHeight;
     }
     
+    // Only called on creation of AnchorPane. It makes everything look nicer.
     private void setResizable() {
         
         // Add resizable listener
-        stage.widthProperty().addListener(new ChangeListener<Number>(){
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                width = (double)newValue;
-                build();
-            }
-        });
+        ChangeListener<Number> lambdaChangeListener = (ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) -> {
+            refresh();
+        };
         
-        stage.heightProperty().addListener(new ChangeListener<Number>(){
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                height = (double)newValue;
-                height = height - 50; // 50 offset
-                build();
-            }
-        });
+        stage.widthProperty().addListener(lambdaChangeListener);
+        stage.heightProperty().addListener(lambdaChangeListener);
         
+    }
+    
+    private void clearChildren() {
+        anchorPane.getChildren().clear();
     }
     
 }

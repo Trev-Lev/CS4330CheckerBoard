@@ -43,28 +43,28 @@ public class CheckerBoardFXMLController implements Initializable, Startable {
     public void handle16x16(ActionEvent event) {
         checkerBoard.setNumRows(16);
         checkerBoard.setNumCols(16);
-        anchorPane = checkerBoard.build();
+        anchorPane = checkerBoard.getBoard();
     }
     
     @FXML 
     public void handle10x10(ActionEvent event) {
         checkerBoard.setNumRows(10);
         checkerBoard.setNumCols(10);
-        anchorPane = checkerBoard.build();
+        anchorPane = checkerBoard.getBoard();
     }
     
     @FXML 
     public void handle8x8(ActionEvent event) {
         checkerBoard.setNumRows(8);
         checkerBoard.setNumCols(8);
-        anchorPane = checkerBoard.build();
+        anchorPane = checkerBoard.getBoard();
     }
     
     @FXML 
     public void handle3x3(ActionEvent event) {
         checkerBoard.setNumRows(3);
         checkerBoard.setNumCols(3);
-        anchorPane = checkerBoard.build();
+        anchorPane = checkerBoard.getBoard();
     }
     
     @FXML

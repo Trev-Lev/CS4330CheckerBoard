@@ -70,7 +70,6 @@ public class CheckerBoardFXMLController implements Initializable, Startable {
     @FXML
     public void handleDefaultSwap(ActionEvent event) {
         checkerBoard.setColors(Color.RED, Color.BLACK);
-        checkerBoard.test();
     }
     
     @FXML
